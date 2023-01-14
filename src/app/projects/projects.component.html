@@ -1,0 +1,26 @@
+<div class="container" style="margin-top:30px">
+  <table class="table" *ngIf="projects">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of projects._embedded.projects">
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.status}}</td>
+      <td>{{p.start_date|date:'mediumDate'}}</td>
+      <td>{{p.end_date|date:'mediumDate'}}</td>
+      <td>
+        <button class="btn btn-success"  >Tasks</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

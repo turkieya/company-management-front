@@ -1,0 +1,28 @@
+<div class="container" style="margin-top:30px">
+  <table class="table" *ngIf="employees">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Number</th>
+      <th>Departement</th>
+      <th>Poste</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let e of employees._embedded.employees">
+      <td>{{e.id}}</td>
+      <td>{{e.firstName}} {{e.lastName}}</td>
+      <td>{{e.email}}</td>
+      <td>{{e.tel}}</td>
+      <td>{{e.departement}}</td>
+      <td>{{e.poste}}</td>
+      <td>
+        <button class="btn btn-success" (click)="getAssignments(e)">Projects</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

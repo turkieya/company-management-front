@@ -1,0 +1,31 @@
+<div class="container " style="margin-top:50px">
+  <h3>Add Employee</h3>
+  <form [formGroup]="EmployeeForm">
+    <div class="mb-3 mt-3">
+      <label for="firstName">FirstName:</label>
+      <input type="text" class="form-control" id="firstName" placeholder="Enter firstName" name="firstName" formControlName="firstName">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="lastName">LastName:</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Enter lastName" name="lastName" formControlName="lastName">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" formControlName="email">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="tel">Phone Number:</label>
+      <input type="text" class="form-control" id="tel" placeholder="Enter phone number" name="tel" formControlName="tel">
+    </div>
+    <label for="tel">Departement:</label>
+    <select class="form-control" formControlName="departement">
+      <option></option>
+      <option   *ngFor="let dep of departements ; let i =index">{{dep}} </option>
+    </select>
+    <div class="mb-3 mt-3">
+      <label for="poste">Poste:</label>
+      <input type="text" class="form-control" id="poste" placeholder="Enter poste" name="poste" formControlName="poste">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add</button>
+  </form>
+</div>

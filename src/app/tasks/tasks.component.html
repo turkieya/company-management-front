@@ -1,0 +1,115 @@
+
+<div class="container" *ngIf="alltasks">
+  <div class="row" style="margin-top:30px">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Employee</div>
+        <div class="card-body text-sm-start">
+          <ul class="list-group">
+            <li class="list-group-item">Employee ID : {{alltasks.employee.id}}</li>
+            <li class="list-group-item">Employee Name : {{alltasks.employee.firstName}} {{alltasks.employee.lastName}}</li>
+            <li class="list-group-item">Employee Email : {{alltasks.employee.email}}</li>
+            <li class="list-group-item">Employee Departement : {{alltasks.employee.departement}}</li>
+            <li class="list-group-item">Employee Poste : {{alltasks.employee.poste}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card" >
+        <div class="card-header">Project</div>
+        <div class="card-body text-sm-start">
+          <ul class="list-group">
+            <li class="list-group-item">Project IS : {{alltasks.project.id}}</li>
+            <li class="list-group-item">Project Name : {{alltasks.project.name}} </li>
+            <li class="list-group-item">Project Status : {{alltasks.project.status}}</li>
+            <li class="list-group-item">Project Start Date : {{alltasks.project.start_date|date:'mediumDate'}}</li>
+            <li class="list-group-item">Project End Date : {{alltasks.project.end_date|date:'mediumDate'}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:30px">
+    <div class="col-md-12">
+    <div class="card">
+
+      <div class="card-header">Tasks</div>              <button type="button"  class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal">
+      <span class="btn-inner--icon"><fa-icon [icon]="faAdd"></fa-icon></span>
+    </button>
+      <div class="card-body ">
+
+        <table class="table table-sm">
+          <thead>
+          <tr>
+            <th> ID</th>
+            <th> Description</th>
+            <th> Status</th>
+            <th> Start Date</th>
+            <th> End Date</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let t of alltasks.tasks ; let i =index">
+            <td>{{t.id}}</td>
+            <td>{{t.description}}</td>
+            <td>{{t.status}}</td>
+            <td>{{t.start_date|date:'mediumDate'}}</td>
+            <td>{{t.end_date|date:'mediumDate'}}</td>
+            <td >
+
+              <button type="button"  class="btn btn-outline-primary" (click)="editTask(t)">
+                <span class="btn-inner--icon"><fa-icon [icon]="faEdit"></fa-icon></span>
+              </button>
+              <button type="button"  class="btn btn-outline-danger" (click)="removeTask(t.id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Task</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="TaskForm">
+          <div class="mb-3 mt-3">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" placeholder="Enter description" [(ngModel)]="task.description" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="start_date">Start Date</label>
+            <input type="date" class="form-control" id="start_date" placeholder="Enter start date" [(ngModel)]="task.start_date" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="end_date">End Date</label>
+            <input type="date" class="form-control" id="end_date" placeholder="Enter end date" [(ngModel)]="task.end_date" [ngModelOptions]="{standalone: true}">
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

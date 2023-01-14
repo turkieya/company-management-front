@@ -1,0 +1,23 @@
+<div class="container " style="margin-top:50px">
+  <h3>Edit Task</h3>
+<form [formGroup]="TaskForm">
+  <div class="mb-3 mt-3">
+    <label for="description">Description</label>
+    <input type="text" class="form-control" id="description" placeholder="Enter description" [(ngModel)]="task.description" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="status">Status</label>
+    <input type="text" class="form-control" id="status" placeholder="Enter status" [(ngModel)]="task.status" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="start_date">Start Date</label>
+    <input type="date" class="form-control" id="start_date" placeholder="Enter start date" [(ngModel)]="task.start_date" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="end_date">End Date</label>
+    <input type="date" class="form-control" id="end_date" placeholder="Enter end date" [(ngModel)]="task.end_date" [ngModelOptions]="{standalone: true}">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()">Edit</button>
+
+</form>
+</div>
